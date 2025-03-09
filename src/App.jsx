@@ -1,20 +1,20 @@
 import React, { useState } from "react";
-import { Button, Input, Card, CardContent } from "@/components/ui";
+import { Button, Input, Card, CardBody } from "@chakra-ui/react";
 import { motion } from "framer-motion";
 
 const predefinedProducts = {
-  "123-456": { name: "Tropical Stew", image: "/images/tropical_stew.png" },
-  "789-101": { name: "Coconut Pie", image: "/images/coconut_pie.png" },
+  "123-456": { name: "Tropical Stew", },//image: "/images/tropical_stew.png" },
+  "789-101": { name: "Coconut Pie", },//image: "/images/coconut_pie.png" },
 };
 
 const fetchItemInfo = (id) => {
   const mockData = {
-    "123": { name: "Coconut", image: "/images/coconut.png" },
-    "456": { name: "Palm Leaf", image: "/images/palm_leaf.png" },
-    "789": { name: "Crab Meat", image: "/images/crab_meat.png" },
-    "101": { name: "Banana", image: "/images/banana.png" },
+    "123": { name: "Coconut", },//image: "/images/coconut.png" },
+    "456": { name: "Palm Leaf", },//image: "/images/palm_leaf.png" },
+    "789": { name: "Crab Meat", },//image: "/images/crab_meat.png" },
+    "101": { name: "Banana", },//image: "/images/banana.png" },
   };
-  return mockData[id] || { name: "Unknown Item", image: "/images/unknown.png" };
+  return mockData[id] || { name: "Unknown Item", };//image: "/images/unknown.png" };
 };
 
 export default function ItemCombiner() {
@@ -33,7 +33,7 @@ export default function ItemCombiner() {
     setIsCooking(true);
     setTimeout(() => {
       const combinedKey = items.map((item) => item.id).sort().join("-");
-      setResult(predefinedProducts[combinedKey] || { name: "No matching recipe", image: "/images/no_recipe.png" });
+      setResult(predefinedProducts[combinedKey] || { name: "No matching recipe", });//image: "/images/no_recipe.png" });
       setIsCooking(false);
     }, 2000);
   };
@@ -49,7 +49,7 @@ export default function ItemCombiner() {
         {items.map((item, index) => (
           <Card key={index} className="p-2 flex flex-col items-center bg-yellow-200 border border-green-900">
             <img src={item.image} alt={item.name} className="w-16 h-16" />
-            <CardContent>{item.name}</CardContent>
+            <CardBody>{item.name}</CardBody>
           </Card>
         ))}
       </div>
@@ -68,7 +68,7 @@ export default function ItemCombiner() {
       {result && (
         <Card className="p-4 text-center bg-yellow-300 border border-green-800">
           <img src={result.image} alt={result.name} className="w-24 h-24 mx-auto" />
-          <CardContent className="font-bold text-green-900">{result.name}</CardContent>
+          <CardBody className="font-bold text-green-900">{result.name}</CardBody>
         </Card>
       )}
     </div>
